@@ -12,7 +12,8 @@ window.onload = function() {
         sleeping: '#f00',
         place: '#ff0',
         driving: '#00f',
-        walk: '#0f0'
+        walk: '#0f0',
+        offline: '#333'
     };
 
     var buildCircos = function (container, oriTL112017, axes) {
@@ -112,6 +113,9 @@ window.onload = function() {
                 opacity: 1,
                 color: function (d) {
                     return gieStainColor[d.name]
+                },
+                tooltipContent: function (d) {
+                    return d.name
                 }
             })
 
