@@ -91,24 +91,6 @@ window.onload = function() {
                     ticks: {display: false}
                 }
             )
-
-            // .line('snp-250', steps, {
-            //     innerRadius: 0.5,
-            //     outerRadius:0.8,
-            //     min: 0,
-            //     max: 0.035,
-            //     color: '#222222',
-            //     axes: axes,
-            //     strokeWidth: 2
-            // })
-            // .line('calories', calories, {
-            //     innerRadius: 0.8,
-            //     outerRadius:1,
-            //     min: 0,
-            //     max: 0.035,
-            //     color: '#222222',
-            //     axes: axes
-            // })
             .line('steps', steps, {
                 innerRadius: 0.5,
                 outerRadius: 0.8,
