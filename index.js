@@ -23,7 +23,7 @@ window.onload = function() {
             height: 1000
         });
 
-        var places = [];
+        var steps = [];
         var eventData = [];
         var calories = [];
         var highlight = [];
@@ -54,7 +54,7 @@ window.onload = function() {
             })
         });
 
-        places = eventData.map(function (d) {
+        steps = eventData.map(function (d) {
             return {
                 // block_id: d.block_id,
                 block_id: 'day0ev0',
@@ -91,22 +91,67 @@ window.onload = function() {
                     ticks: {display: false}
                 }
             )
-            .line('snp-250', places, {
+
+            // .line('snp-250', steps, {
+            //     innerRadius: 0.5,
+            //     outerRadius:0.8,
+            //     min: 0,
+            //     max: 0.035,
+            //     color: '#222222',
+            //     axes: axes,
+            //     strokeWidth: 2
+            // })
+            // .line('calories', calories, {
+            //     innerRadius: 0.8,
+            //     outerRadius:1,
+            //     min: 0,
+            //     max: 0.035,
+            //     color: '#222222',
+            //     axes: axes
+            // })
+            .line('steps', steps, {
                 innerRadius: 0.5,
-                outerRadius:0.8,
+                outerRadius: 0.8,
+                maxGap: 1000000,
                 min: 0,
-                max: 0.035,
+                max: 0.015,
                 color: '#222222',
-                axes: axes
+                axes: axes,
+                tooltipContent: null
+            })
+            .scatter('steps-tooltip', steps, {
+                innerRadius: 0.5,
+                outerRadius: 0.8,
+                min: 0,
+                max: 0.015,
+                // fill: false,
+                strokeWidth: 0,
+                tooltipContent: function (d, i) {
+                    return Math.round(d.value * 100000);
+                }
             })
             .line('calories', calories, {
                 innerRadius: 0.8,
-                outerRadius:1,
+                outerRadius: 1,
+                maxGap: 1000000,
                 min: 0,
-                max: 0.035,
+                max: 0.015,
                 color: '#222222',
-                axes: axes
+                axes: axes,
+                tooltipContent: null
             })
+            .scatter('calories-tooltip', calories, {
+                innerRadius: 0.8,
+                outerRadius: 1,
+                min: 0,
+                max: 0.015,
+                // fill: false,
+                strokeWidth: 0,
+                tooltipContent: function (d, i) {
+                    return Math.round(d.value * 100000);
+                }
+            })
+
             .highlight('highlight', highlight, {
                 innerRadius: 400,
                 outerRadius: 500,
